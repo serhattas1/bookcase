@@ -1,4 +1,4 @@
-package com.example.bookcase;
+package org.example.bookcase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
