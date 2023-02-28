@@ -19,6 +19,7 @@
         <tr>
             <th>Name</th>
             <th>Year</th>
+            <th>Is Active</th>
         </tr>
         </thead>
         <tbody>
@@ -32,8 +33,11 @@
 <!--                <a th:unless ="${player.isActive} "th:href="@{/player/activate/{id}(id=${player.id})}"-->
 <!--                   class="btn btn-danger">Activate Player</a>-->
 <!--            </td>-->
-        </tr>
-        </tbody>
+            <td>
+                <a th:if ="${book.isActive} "th:href="@{/book/cancel/{id}(id=${book.id})}"  class="btn btn-danger">Passive Book</a>
+                <a th:unless ="${book.isActive} "th:href="@{/book/activate/{id}(id=${book.id})}"  class="btn btn-primary">Activate Book</a>
+            </td>
+        </tr></tbody>
     </table>
 </div>
 </body>

@@ -24,8 +24,10 @@ public class BookService {
         if (book == null) {
             throw new Exception("Entity not found");
         }
-//        if (book.getId() <= 0) {
-//            //book.setIsActive(true);
+         if (book.getId() <= 0) {
+             book.setActive(true);
+         }
+
 //
 //            //book.setCreated(LocalDateTime.now());
 //
@@ -41,5 +43,54 @@ public class BookService {
                 bookRepository.findAll();
         logger.info(books);
         return books;
+    }
+
+    public Book getById(long bookId) {
+        if (bookId <= 0L) {
+            logger.info("BookId cannot be less or equal than zero. BookId: " + bookId);
+            return null;
+        }
+        return bookRepository.getReferenceById(bookId);
+    }
+    @Transactional(readOnly = false)
+    public void setPassiveBook(long bookId) {
+        if (bookId <= 0L) {
+            logger.info("BookId cannot be less or equal than zero. BookId: " + bookId);
+            return;
+        }
+
+        Book book = getById(bookId);
+        if (book == null) {
+            logger.info("Book not found for that BookId: " + bookId);
+            return;
+        }
+
+        book.setActive(false);
+        try {
+            saveBook(book);
+        } catch (Exception e) {
+            logger.error(e);
+        }
+    }
+
+    @Transactional(readOnly = false)
+    public void setActivateBook(long bookId) {
+        if (bookId <= 0L) {
+            logger.info("PlayerId cannot be less or equal than zero. PlayerId: " + bookId);
+            return;
+        }
+
+        Book book = getById(bookId);
+        if (book == null) {
+            logger.info("Book not found for that BookId: " + bookId);
+            return;
+        }
+
+        book.setActive(true);
+        try {
+            saveBook(book);
+        } catch (Exception e) {
+            logger.error(e);
+        }
     }
 }

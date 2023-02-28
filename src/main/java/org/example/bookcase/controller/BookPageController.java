@@ -42,4 +42,16 @@ public class BookPageController {
         bookService.saveBook(book);
         return showBookListPage();
     }
+
+    @GetMapping("/book/cancel/{id}")
+    public ModelAndView cancelBook(@PathVariable(value = "id") long id){
+        bookService.setPassiveBook(id);
+        return showBookListPage();
+    }
+
+    @GetMapping("/book/activate/{id}")
+    public ModelAndView activate(@PathVariable(value = "id") long id) {
+        bookService.setActivateBook(id);
+        return  showBookListPage();
+    }
 }

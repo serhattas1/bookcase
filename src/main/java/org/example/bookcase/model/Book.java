@@ -25,4 +25,7 @@ public class Book {
 
     @Column(name = "BOOK_YEAR")
     private Integer book_year;
+
+    @Column(name="IS_ACTIVE")
+    private boolean isActive;
 }
