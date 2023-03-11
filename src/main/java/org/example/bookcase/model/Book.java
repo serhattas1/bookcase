@@ -28,4 +28,8 @@ public class Book {
 
     @Column(name="IS_ACTIVE")
     private boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name="WRITER_ID")
+    private Writer writer;
 }

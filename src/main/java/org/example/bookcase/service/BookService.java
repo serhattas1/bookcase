@@ -17,6 +17,9 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    WriterService writerService;
+
     Logger logger = LogManager.getLogger(BookService.class);
 
     @Transactional(readOnly = false)

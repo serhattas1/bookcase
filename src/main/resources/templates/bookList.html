@@ -19,6 +19,7 @@
         <tr>
             <th>Name</th>
             <th>Year</th>
+            <th>Writer</th>
             <th>Is Active</th>
         </tr>
         </thead>
@@ -26,17 +27,16 @@
         <tr th:each="book:${books}">
             <td th:text="${book.book_name}"></td>
             <td th:text="${book.book_year}"></td>
-<!--            <td> <a th:href="@{/player/edit/{id}(id=${player.id})}"-->
-<!--                    class="btn btn-primary">Edit Player</a>-->
-<!--                <a th:if ="${player.isActive} "th:href="@{/player/cancel/{id}(id=${player.id})}"-->
-<!--                   class="btn btn-danger">Passive Player</a>-->
-<!--                <a th:unless ="${player.isActive} "th:href="@{/player/activate/{id}(id=${player.id})}"-->
-<!--                   class="btn btn-danger">Activate Player</a>-->
-<!--            </td>-->
-            <td>
+            <td th:text="${book.writer?.writer_name + ' '+ book.writer?.writer_surname}"></td>
+            <td> <a th:href="@{/book/edit/{id}(id=${book.id})}"
+                    class="btn btn-primary">Edit Book</a>
                 <a th:if ="${book.isActive} "th:href="@{/book/cancel/{id}(id=${book.id})}"  class="btn btn-danger">Passive Book</a>
                 <a th:unless ="${book.isActive} "th:href="@{/book/activate/{id}(id=${book.id})}"  class="btn btn-primary">Activate Book</a>
             </td>
+<!--            <td>-->
+<!--                <a th:if ="${book.isActive} "th:href="@{/book/cancel/{id}(id=${book.id})}"  class="btn btn-danger">Passive Book</a>-->
+<!--                <a th:unless ="${book.isActive} "th:href="@{/book/activate/{id}(id=${book.id})}"  class="btn btn-primary">Activate Book</a>-->
+<!--            </td>-->
         </tr></tbody>
     </table>
 </div>

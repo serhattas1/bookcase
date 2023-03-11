@@ -18,7 +18,15 @@
 
         <input type="text" th:field="*{book_year}" placeholder="Book Year" class="form-control mb-4 col-4">
 
+        <select class="form-control" th:field="*{writer}">
+            <option value="0">Select Writer</option>
+            <option th:each="writer : ${writerList}" th:value="${writer.id}" th:text="${writer.writer_name + ' '+writer.writer_surname}"></option>
+        </select>
+        <br/>
+
         <button type="submit" class="btn btn-info col-2"> Save Book</button>
+
+
     </form>
 
     <hr>
