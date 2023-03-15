@@ -5,6 +5,7 @@ import org.example.bookcase.repository.BookRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +43,9 @@ public class BookService {
     {
         logger.info("INFO Getting books from database");
 
-        List<Book> books =
-                bookRepository.findAll();
+        //List<Book> books = bookRepository.findAll();
+        List<Book> books=bookRepository.GetBookList();
+
         logger.info(books);
         return books;
     }
@@ -95,5 +97,15 @@ public class BookService {
         } catch (Exception e) {
             logger.error(e);
         }
+    }
+
+
+    //for example native query
+    public Book getBookDetail(long bookId) {
+        if (bookId <= 0L) {
+            logger.info("BookId cannot be less or equal than zero. BookId: " + bookId);
+            return null;
+        }
+        return bookRepository.GetBookDetail(bookId);
     }
 }

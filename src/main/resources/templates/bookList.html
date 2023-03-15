@@ -32,6 +32,8 @@
                     class="btn btn-primary">Edit Book</a>
                 <a th:if ="${book.isActive} "th:href="@{/book/cancel/{id}(id=${book.id})}"  class="btn btn-danger">Passive Book</a>
                 <a th:unless ="${book.isActive} "th:href="@{/book/activate/{id}(id=${book.id})}"  class="btn btn-primary">Activate Book</a>
+                <a th:href="@{/book/detail/{id}(id=${book.id})}"
+                   class="btn btn-primary">Detail</a>
             </td>
 <!--            <td>-->
 <!--                <a th:if ="${book.isActive} "th:href="@{/book/cancel/{id}(id=${book.id})}"  class="btn btn-danger">Passive Book</a>-->

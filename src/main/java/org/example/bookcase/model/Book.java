@@ -20,10 +20,10 @@ public class Book {
     @jakarta.persistence.Id
     private long id;
 
-    @Column(name = "BOOK_NAME")
+    @Column(name = "BOOK_NAME",nullable = false)
     private String book_name;
 
-    @Column(name = "BOOK_YEAR")
+    @Column(name = "BOOK_YEAR",nullable = false)
     private Integer book_year;
 
     @Column(name="IS_ACTIVE")

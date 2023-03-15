@@ -70,4 +70,13 @@ public class BookPageController {
         modelAndView.addObject("book", book);
         return modelAndView;
     }
+
+    @GetMapping("/book/detail/{id}")
+    public ModelAndView GetBookInfo(@PathVariable(value = "id") long id, Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        Book book = bookService.getBookDetail(id);
+        modelAndView.setViewName("bookDetail");
+        modelAndView.addObject("book", book);
+        return modelAndView;
+    }
 }
